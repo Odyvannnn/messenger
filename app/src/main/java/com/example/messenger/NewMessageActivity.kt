@@ -2,21 +2,65 @@ package com.example.messenger
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import com.example.messenger.databinding.ActivityNewMessageBinding
+import com.example.messenger.databinding.UserRowNewMessageBinding
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.xwray.groupie.GroupieAdapter
+import com.xwray.groupie.viewbinding.BindableItem
 
 class NewMessageActivity : AppCompatActivity() {
 
-    private var _binding: ActivityNewMessageBinding? = null
-    private val binding: ActivityNewMessageBinding
-        get() = _binding!!
+    private lateinit var binding: ActivityNewMessageBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_message)
-
+        binding = ActivityNewMessageBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
         supportActionBar?.title = "Выберете пользователя"
 
-        binding.recyclerViewNewMessage.adapter
+        fetchUsers()
+
     }
+    private fun fetchUsers(){
+        val ref = FirebaseDatabase.getInstance("https://messenger-36423-default-rtdb.europe-west1.firebasedatabase.app").getReference("/users")
+        ref.addListenerForSingleValueEvent(object: ValueEventListener {
+            override fun onDataChange(p0: DataSnapshot) {
+                val adapter = GroupieAdapter()
+
+                p0.children.forEach{
+                    val user = it.getValue(User::class.java)
+                    if (user != null) {
+                        adapter.add(UserItem(user))
+                    }
+                }
+
+                binding.recyclerViewNewMessage.setAdapter(adapter)
+            }
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+        })
+    }
+}
+
+class UserItem(private val user: User) : BindableItem<UserRowNewMessageBinding>() {
+
+    override fun bind(viewBinding: UserRowNewMessageBinding, position: Int) {
+        viewBinding.usernameNewMessage.text = user.username
+    }
+
+    override fun getLayout(): Int {
+        return R.layout.user_row_new_message
+    }
+
+    override fun initializeViewBinding(view: View): UserRowNewMessageBinding =
+        UserRowNewMessageBinding.bind(view)
+
 }
