@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Messenger</string>
+    <string name="register">Зарегистрироваться</string>
+    <string name="go_to_login">Уже есть аккаунт?</string>
+    <string name="login">Войти</string>
+    <string name="username">Username</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="go_to_register">Нет аккаунта?</string>
+    <string name="name">Name</string>
+    <string name="signOut">Выход</string>
+    <string name="new_message_button">Новое сообщение</string>
+</resources>
