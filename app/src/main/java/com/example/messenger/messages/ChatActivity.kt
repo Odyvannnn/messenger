@@ -57,7 +57,7 @@ class ChatActivity : AppCompatActivity() {
                         adapter.add(ChatToItem(chatMessage.text, toUser!!))
                     }
                 }
-
+                binding.recyclerViewChatLog.scrollToPosition(adapter.itemCount - 1)
             }
 
             override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
@@ -94,5 +94,10 @@ class ChatActivity : AppCompatActivity() {
             }
 
         toReference.setValue(chatMessage)
+
+        val latestChatsReference = FirebaseDatabase.getInstance("https://messenger-36423-default-rtdb.europe-west1.firebasedatabase.app").getReference("/latest-messages/$fromId/$toId")
+        latestChatsReference.setValue(chatMessage)
+        val latestChatsToReference = FirebaseDatabase.getInstance("https://messenger-36423-default-rtdb.europe-west1.firebasedatabase.app").getReference("/latest-messages/$toId/$fromId")
+        latestChatsToReference.setValue(chatMessage)
     }
 }
