@@ -2,20 +2,18 @@ package com.example.messenger.messages
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import com.example.messenger.R
 import com.example.messenger.databinding.ActivityChatBinding
-import com.example.messenger.databinding.ChatFromUserRowBinding
-import com.example.messenger.databinding.ChatToUserRowBinding
 import com.example.messenger.models.ChatMessage
 import com.example.messenger.models.User
+import com.example.messenger.views.ChatFromItem
+import com.example.messenger.views.ChatToItem
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.xwray.groupie.GroupieAdapter
-import com.xwray.groupie.viewbinding.BindableItem
 
 class ChatActivity : AppCompatActivity() {
 
@@ -97,32 +95,4 @@ class ChatActivity : AppCompatActivity() {
 
         toReference.setValue(chatMessage)
     }
-}
-
-class ChatFromItem(val text: String): BindableItem<ChatFromUserRowBinding>() {
-    override fun bind(viewBinding: ChatFromUserRowBinding, position: Int) {
-        viewBinding.textViewMessage.text = text
-    }
-
-    override fun getLayout(): Int {
-        return R.layout.chat_from_user_row
-    }
-
-    override fun initializeViewBinding(view: View): ChatFromUserRowBinding =
-        ChatFromUserRowBinding.bind(view)
-
-}
-
-class ChatToItem(val text: String, val user: User): BindableItem<ChatToUserRowBinding>() {
-    override fun bind(viewBinding: ChatToUserRowBinding, position: Int) {
-        viewBinding.textViewMessage.text = text
-    }
-
-    override fun getLayout(): Int {
-        return R.layout.chat_to_user_row
-    }
-
-    override fun initializeViewBinding(view: View): ChatToUserRowBinding =
-        ChatToUserRowBinding.bind(view)
-
 }
