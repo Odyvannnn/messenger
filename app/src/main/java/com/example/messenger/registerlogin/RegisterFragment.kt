@@ -1,4 +1,4 @@
-package com.example.messenger
+package com.example.messenger.registerlogin
 
 import android.content.ContentValues
 import android.content.ContentValues.TAG
@@ -11,7 +11,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.NavHostFragment
+import com.example.messenger.R
 import com.example.messenger.databinding.FragmentRegisterBinding
+import com.example.messenger.models.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
@@ -130,8 +132,4 @@ class RegisterFragment : Fragment() {
                 Log.d("RegisterFragment", "User saved to database")
             }
     }
-}
-
-class User(val uid: String, val username: String) {
-    constructor() : this("", "")
 }

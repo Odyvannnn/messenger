@@ -1,12 +1,12 @@
-package com.example.messenger
+package com.example.messenger.messages
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
-import android.view.MenuInflater
 import android.view.MenuItem
-import androidx.navigation.fragment.NavHostFragment
+import com.example.messenger.R
+import com.example.messenger.registerlogin.MainActivity
 import com.google.firebase.auth.FirebaseAuth
 
 class HomeActivity : AppCompatActivity() {

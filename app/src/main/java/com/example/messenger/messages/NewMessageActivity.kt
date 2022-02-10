@@ -1,10 +1,13 @@
-package com.example.messenger
+package com.example.messenger.messages
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.example.messenger.R
 import com.example.messenger.databinding.ActivityNewMessageBinding
 import com.example.messenger.databinding.UserRowNewMessageBinding
+import com.example.messenger.models.User
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -28,6 +31,11 @@ class NewMessageActivity : AppCompatActivity() {
         fetchUsers()
 
     }
+    companion object{
+        const val USER_KEY = "USER_KEY"
+    }
+
+
     private fun fetchUsers(){
         val ref = FirebaseDatabase.getInstance("https://messenger-36423-default-rtdb.europe-west1.firebasedatabase.app").getReference("/users")
         ref.addListenerForSingleValueEvent(object: ValueEventListener {
@@ -40,6 +48,15 @@ class NewMessageActivity : AppCompatActivity() {
                         adapter.add(UserItem(user))
                     }
                 }
+                adapter.setOnItemClickListener { item, view ->
+
+                    val userItem = item as UserItem
+
+                    val intent = Intent(view.context,ChatActivity::class.java )
+                    intent.putExtra(USER_KEY, userItem.user)
+                    startActivity(intent)
+                    finish()
+                }
 
                 binding.recyclerViewNewMessage.setAdapter(adapter)
             }
@@ -50,7 +67,7 @@ class NewMessageActivity : AppCompatActivity() {
     }
 }
 
-class UserItem(private val user: User) : BindableItem<UserRowNewMessageBinding>() {
+class UserItem(val user: User) : BindableItem<UserRowNewMessageBinding>() {
 
     override fun bind(viewBinding: UserRowNewMessageBinding, position: Int) {
         viewBinding.usernameNewMessage.text = user.username

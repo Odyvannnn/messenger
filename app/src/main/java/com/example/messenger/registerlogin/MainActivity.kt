@@ -1,8 +1,9 @@
-package com.example.messenger
+package com.example.messenger.registerlogin
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.findNavController
+import com.example.messenger.R
 
 class MainActivity : AppCompatActivity() {
 

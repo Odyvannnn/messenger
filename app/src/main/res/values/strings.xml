@@ -10,5 +10,6 @@
     <string name="name">Name</string>
     <string name="signOut">Выход</string>
     <string name="new_message_button">Новое сообщение</string>
-    <string name="username">Username</string>
+    <string name="write_message">Сообщение</string>
+    <string name="send_message">Отправить</string>
 </resources>
