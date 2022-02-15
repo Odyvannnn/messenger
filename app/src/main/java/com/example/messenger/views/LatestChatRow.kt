@@ -24,7 +24,8 @@ class LatestChatsRow(val chatMessage: ChatMessage): BindableItem<LatestChatsRowB
             chatPartnerId = chatMessage.fromId
         }
 
-        val ref = FirebaseDatabase.getInstance("https://messenger-36423-default-rtdb.europe-west1.firebasedatabase.app").getReference("/users/$chatPartnerId")
+        val ref = FirebaseDatabase.getInstance("https://messenger-36423-default-rtdb.europe-west1.firebasedatabase.app")
+            .getReference("/users/$chatPartnerId")
         ref.addListenerForSingleValueEvent(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 chatPartnerUser = snapshot.getValue(User::class.java)

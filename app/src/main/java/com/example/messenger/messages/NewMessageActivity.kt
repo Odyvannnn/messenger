@@ -37,7 +37,8 @@ class NewMessageActivity : AppCompatActivity() {
 
 
     private fun fetchUsers(){
-        val ref = FirebaseDatabase.getInstance("https://messenger-36423-default-rtdb.europe-west1.firebasedatabase.app").getReference("/users")
+        val ref = FirebaseDatabase.getInstance("https://messenger-36423-default-rtdb.europe-west1.firebasedatabase.app")
+            .getReference("/users")
         ref.addListenerForSingleValueEvent(object: ValueEventListener {
             override fun onDataChange(p0: DataSnapshot) {
                 val adapter = GroupieAdapter()

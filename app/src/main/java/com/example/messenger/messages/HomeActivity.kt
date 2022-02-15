@@ -49,7 +49,8 @@ class HomeActivity : AppCompatActivity() {
 
     private fun listenForLatestChats() {
         val fromId = FirebaseAuth.getInstance().uid
-        val ref = FirebaseDatabase.getInstance("https://messenger-36423-default-rtdb.europe-west1.firebasedatabase.app").getReference("/latest-messages/$fromId")
+        val ref = FirebaseDatabase.getInstance("https://messenger-36423-default-rtdb.europe-west1.firebasedatabase.app")
+            .getReference("/latest-messages/$fromId")
         ref.addChildEventListener(object: ChildEventListener{
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
                 val chatMessage = snapshot.getValue(ChatMessage::class.java) ?: return

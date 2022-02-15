@@ -3,14 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/round_corners.xml" value="0.211" />
+        <entry key="app/src/main/res/drawable/round_message_from.xml" value="0.211" />
+        <entry key="app/src/main/res/drawable/round_message_to.xml" value="0.211" />
         <entry key="app/src/main/res/drawable/rounded_button.xml" value="0.211" />
-        <entry key="app/src/main/res/layout/activity_chat.xml" value="0.2479736328125" />
+        <entry key="app/src/main/res/layout/activity_chat.xml" value="0.328" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_new_message.xml" value="0.18746490478515626" />
-        <entry key="app/src/main/res/layout/chat_from_user_row.xml" value="0.19610507246376813" />
-        <entry key="app/src/main/res/layout/chat_to_user_row.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/chat_from_user_row.xml" value="0.4918509220731432" />
+        <entry key="app/src/main/res/layout/chat_to_user_row.xml" value="0.29602420088173675" />
         <entry key="app/src/main/res/layout/fragment_chat_list.xml" value="0.31674041748046877" />
         <entry key="app/src/main/res/layout/fragment_first.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.27791534423828124" />

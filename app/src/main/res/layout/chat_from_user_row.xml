@@ -7,11 +7,14 @@
 
     <TextView
         android:id="@+id/textViewMessage"
+        android:background="@drawable/round_message_from"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:textColor="#090909"
         android:padding="16dp"
+        android:textSize="20sp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:maxWidth="240dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

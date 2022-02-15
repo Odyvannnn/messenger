@@ -44,7 +44,8 @@ class ChatActivity : AppCompatActivity() {
     private fun listenForMessages() {
         val fromId = FirebaseAuth.getInstance().uid
         val toId = toUser?.uid
-        val ref = FirebaseDatabase.getInstance("https://messenger-36423-default-rtdb.europe-west1.firebasedatabase.app").getReference("/user-messages/$fromId/$toId")
+        val ref = FirebaseDatabase.getInstance("https://messenger-36423-default-rtdb.europe-west1.firebasedatabase.app")
+            .getReference("/user-messages/$fromId/$toId")
 
         ref.addChildEventListener(object: ChildEventListener{
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
@@ -81,10 +82,12 @@ class ChatActivity : AppCompatActivity() {
         val fromId = FirebaseAuth.getInstance().uid
         val user = intent.getParcelableExtra<User>(NewMessageActivity.USER_KEY)
         val toId = user!!.uid
-        val reference = FirebaseDatabase.getInstance("https://messenger-36423-default-rtdb.europe-west1.firebasedatabase.app").getReference("/user-messages/$fromId/$toId").push()
+        val reference = FirebaseDatabase.getInstance("https://messenger-36423-default-rtdb.europe-west1.firebasedatabase.app")
+            .getReference("/user-messages/$fromId/$toId").push()
         if (fromId == null) return
 
-        val toReference = FirebaseDatabase.getInstance("https://messenger-36423-default-rtdb.europe-west1.firebasedatabase.app").getReference("/user-messages/$toId/$fromId").push()
+        val toReference = FirebaseDatabase.getInstance("https://messenger-36423-default-rtdb.europe-west1.firebasedatabase.app")
+            .getReference("/user-messages/$toId/$fromId").push()
 
         val chatMessage = ChatMessage(reference.key!!, text, fromId, toId, System.currentTimeMillis() / 1000)
         reference.setValue(chatMessage)
@@ -95,9 +98,11 @@ class ChatActivity : AppCompatActivity() {
 
         toReference.setValue(chatMessage)
 
-        val latestChatsReference = FirebaseDatabase.getInstance("https://messenger-36423-default-rtdb.europe-west1.firebasedatabase.app").getReference("/latest-messages/$fromId/$toId")
+        val latestChatsReference = FirebaseDatabase.getInstance("https://messenger-36423-default-rtdb.europe-west1.firebasedatabase.app")
+            .getReference("/latest-messages/$fromId/$toId")
         latestChatsReference.setValue(chatMessage)
-        val latestChatsToReference = FirebaseDatabase.getInstance("https://messenger-36423-default-rtdb.europe-west1.firebasedatabase.app").getReference("/latest-messages/$toId/$fromId")
+        val latestChatsToReference = FirebaseDatabase.getInstance("https://messenger-36423-default-rtdb.europe-west1.firebasedatabase.app")
+            .getReference("/latest-messages/$toId/$fromId")
         latestChatsToReference.setValue(chatMessage)
     }
 }

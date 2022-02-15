@@ -124,7 +124,8 @@ class RegisterFragment : Fragment() {
 
     private fun saveUserToFirebaseDatabase() {
         val uid = FirebaseAuth.getInstance().uid  ?: ""
-        val ref = FirebaseDatabase.getInstance("https://messenger-36423-default-rtdb.europe-west1.firebasedatabase.app").getReference("/users/$uid")
+        val ref = FirebaseDatabase.getInstance("https://messenger-36423-default-rtdb.europe-west1.firebasedatabase.app")
+            .getReference("/users/$uid")
         val user = User(uid, binding.usernameRegister.text.toString())
 
         ref.setValue(user)

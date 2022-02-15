@@ -3,11 +3,11 @@
     <string name="register">Зарегистрироваться</string>
     <string name="go_to_login">Уже есть аккаунт?</string>
     <string name="login">Войти</string>
-    <string name="username">Username</string>
+    <string name="username">Имя пользователя</string>
     <string name="email">Email</string>
-    <string name="password">Password</string>
+    <string name="password">Пароль</string>
     <string name="go_to_register">Нет аккаунта?</string>
-    <string name="name">Name</string>
+    <string name="name">Имя</string>
     <string name="signOut">Выход</string>
     <string name="new_message_button">Новое сообщение</string>
     <string name="write_message">Сообщение</string>
